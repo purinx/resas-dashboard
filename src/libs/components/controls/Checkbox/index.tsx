@@ -1,4 +1,4 @@
-import { ReactNode, useRef, useState } from 'react';
+import { ReactNode, useId, useRef } from 'react';
 import { CheckIcon } from '@radix-ui/react-icons';
 
 import { CheckboxLabel } from './CheckboxLabel';
@@ -13,10 +13,14 @@ type Props = {
 
 export const Checkbox = ({ checked, onChange, children }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
+  const id = useId();
 
   return (
-    <CheckboxLabel>
+    <CheckboxLabel htmlFor={id}>
       <CheckboxButton
+        id={id}
+        role="checkbox"
+        aria-checked={checked}
         onClick={() => {
           if (!ref.current) return;
           ref.current.click();
