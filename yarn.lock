@@ -3231,6 +3231,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addon-styling-webpack@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@storybook/addon-styling-webpack@npm:0.0.5"
+  dependencies:
+    "@storybook/node-logger": "npm:^7.0.12"
+  peerDependencies:
+    webpack: ^5.0.0
+  checksum: 6dbf0c64376075f956c9a61ecf3f4e76db666f528f1949fbc168740c39deed14ca97c710724ebe0dd3ca8536f8da686ea6ecfa20adea7ad64740c2a12c38df09
+  languageName: node
+  linkType: hard
+
 "@storybook/addon-toolbars@npm:7.5.3":
   version: 7.5.3
   resolution: "@storybook/addon-toolbars@npm:7.5.3"
@@ -3800,7 +3811,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/node-logger@npm:7.5.3":
+"@storybook/node-logger@npm:7.5.3, @storybook/node-logger@npm:^7.0.12":
   version: 7.5.3
   resolution: "@storybook/node-logger@npm:7.5.3"
   checksum: 327f5eef43adcbbf9c5daa49c82ee8d57e6cf795defdde12b9988e04c66209ea99a49574f73a82c01c78331756dd5d50440a1d09cc7b3b6ff19e672d24390e94
@@ -6507,7 +6518,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-loader@npm:^6.7.1, css-loader@npm:^6.7.3":
+"css-loader@npm:^6.7.1, css-loader@npm:^6.7.3, css-loader@npm:^6.8.1":
   version: 6.8.1
   resolution: "css-loader@npm:6.8.1"
   dependencies:
@@ -10104,6 +10115,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mini-css-extract-plugin@npm:^2.7.6":
+  version: 2.7.6
+  resolution: "mini-css-extract-plugin@npm:2.7.6"
+  dependencies:
+    schema-utils: "npm:^4.0.0"
+  peerDependencies:
+    webpack: ^5.0.0
+  checksum: 4862da928f52c18b37daa52d548c9f2a1ac65c900a48b63f7faa3354d8cfcd21618c049696559e73e2e27fc12d46748e6a490e0b885e54276429607d0d08c156
+  languageName: node
+  linkType: hard
+
 "minimalistic-assert@npm:^1.0.0, minimalistic-assert@npm:^1.0.1":
   version: 1.0.1
   resolution: "minimalistic-assert@npm:1.0.1"
@@ -11920,6 +11942,7 @@ __metadata:
     "@storybook/addon-interactions": "npm:^7.5.3"
     "@storybook/addon-links": "npm:^7.5.3"
     "@storybook/addon-onboarding": "npm:^1.0.8"
+    "@storybook/addon-styling-webpack": "npm:^0.0.5"
     "@storybook/blocks": "npm:^7.5.3"
     "@storybook/nextjs": "npm:^7.5.3"
     "@storybook/react": "npm:^7.5.3"
@@ -11930,13 +11953,17 @@ __metadata:
     "@vanilla-extract/css": "npm:^1.14.0"
     "@vanilla-extract/next-plugin": "npm:^2.3.2"
     "@vanilla-extract/recipes": "npm:^0.5.1"
+    "@vanilla-extract/webpack-plugin": "npm:^2.3.1"
+    css-loader: "npm:^6.8.1"
     eslint: "npm:^8"
     eslint-config-next: "npm:14.0.2"
     eslint-plugin-storybook: "npm:^0.6.15"
+    mini-css-extract-plugin: "npm:^2.7.6"
     next: "npm:14.0.2"
     react: "npm:^18"
     react-dom: "npm:^18"
     storybook: "npm:^7.5.3"
+    style-loader: "npm:^3.3.3"
     typescript: "npm:^5"
   languageName: unknown
   linkType: soft
@@ -12743,7 +12770,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-loader@npm:^3.3.1":
+"style-loader@npm:^3.3.1, style-loader@npm:^3.3.3":
   version: 3.3.3
   resolution: "style-loader@npm:3.3.3"
   peerDependencies:

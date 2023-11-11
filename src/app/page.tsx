@@ -5,7 +5,7 @@ import { Title } from "@/libs/components/typographies/Title";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Title>This is styled by vanilla-extract.</Title>
+      <Title>This is styled with vanilla-extract.</Title>
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
