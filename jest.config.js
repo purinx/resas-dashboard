@@ -7,6 +7,10 @@ const createJestConfig = nextJest({
 
 const config = {
   testEnvironment: 'jsdom',
+  setupFiles: ['./jest.polyfill.js'],
+  testEnvironmentOptions: {
+    customExportConditions: [''],
+  },
 };
 
 module.exports = createJestConfig(config);
