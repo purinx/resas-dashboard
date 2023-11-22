@@ -4804,6 +4804,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash.uniq@npm:^4":
+  version: 4.5.9
+  resolution: "@types/lodash.uniq@npm:4.5.9"
+  dependencies:
+    "@types/lodash": "npm:*"
+  checksum: 60f125db84fc73aa07c1b435f9df773ebf16124c9506eec3e7f61b2cfc67da037a55d7f38a6eb7ed05391b8d93a44b17b01ef7c95e5ee3f17e1dc6bf7f3b731e
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:*":
+  version: 4.14.202
+  resolution: "@types/lodash@npm:4.14.202"
+  checksum: 1bb9760a5b1dda120132c4b987330d67979c95dbc22612678682cd61b00302e190f4207228f3728580059cdab5582362262e3819aea59960c1017bd2b9fb26f6
+  languageName: node
+  linkType: hard
+
 "@types/lodash@npm:^4.14.167":
   version: 4.14.201
   resolution: "@types/lodash@npm:4.14.201"
@@ -11160,6 +11176,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.uniq@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.uniq@npm:4.5.0"
+  checksum: 86246ca64ac0755c612e5df6d93cfe92f9ecac2e5ff054b965efbbb1d9a647b6310969e78545006f70f52760554b03233ad0103324121ae31474c20d5f7a2812
+  languageName: node
+  linkType: hard
+
 "lodash@npm:^4.17.15, lodash@npm:^4.17.20, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
@@ -13511,6 +13534,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.1.4"
     "@testing-library/react": "npm:^14.1.0"
     "@types/jest": "npm:^29.5.8"
+    "@types/lodash.uniq": "npm:^4"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
@@ -13525,6 +13549,7 @@ __metadata:
     eslint-plugin-storybook: "npm:^0.6.15"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
+    lodash.uniq: "npm:^4.5.0"
     mini-css-extract-plugin: "npm:^2.7.6"
     msw: "npm:^2.0.8"
     next: "npm:14.0.2"
@@ -13538,6 +13563,7 @@ __metadata:
     typescript: "npm:^5"
     undici: "npm:^5.27.2"
     zod: "npm:^3.22.4"
+    zustand: "npm:^4.4.6"
   languageName: unknown
   linkType: soft
 
@@ -15284,6 +15310,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"use-sync-external-store@npm:1.2.0":
+  version: 1.2.0
+  resolution: "use-sync-external-store@npm:1.2.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: a676216affc203876bd47981103f201f28c2731361bb186367e12d287a7566763213a8816910c6eb88265eccd4c230426eb783d64c373c4a180905be8820ed8e
+  languageName: node
+  linkType: hard
+
 "util-deprecate@npm:^1.0.1, util-deprecate@npm:^1.0.2, util-deprecate@npm:~1.0.1":
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
@@ -15880,5 +15915,25 @@ __metadata:
   version: 3.22.4
   resolution: "zod@npm:3.22.4"
   checksum: 73622ca36a916f785cf528fe612a884b3e0f183dbe6b33365a7d0fc92abdbedf7804c5e2bd8df0a278e1472106d46674281397a3dd800fa9031dc3429758c6ac
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^4.4.6":
+  version: 4.4.6
+  resolution: "zustand@npm:4.4.6"
+  dependencies:
+    use-sync-external-store: "npm:1.2.0"
+  peerDependencies:
+    "@types/react": ">=16.8"
+    immer: ">=9.0"
+    react: ">=16.8"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    immer:
+      optional: true
+    react:
+      optional: true
+  checksum: e2789fe5cc0f8806815afeed47d56eb02d30e872d61145e2bdd0456b16de5f59d20e2a957c34ebc9ac00f150165e89304d15a998b05476abcb486a521e77e448
   languageName: node
   linkType: hard
