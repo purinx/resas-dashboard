@@ -16,11 +16,10 @@ const PrefecturesResponseSchema = z.object({
 
 export type ResasPrefectureResponse = z.infer<typeof PrefecturesResponseSchema>;
 
+export type Prefecture = ResasPrefectureResponse['result'][number];
+
 export const fetchPrefectures = async (): Promise<ResasPrefectureResponse['result']> => {
   const res = await axios.get(Endpoints.prefectures, { headers }).catch((e) => {
-    if (isAxiosError(e)) {
-      throw new AppError('ResasPrefecturesFetchError', e.message);
-    }
     throw new AppError('ResasPrefecturesFetchError', e.message);
   });
 
