@@ -1,4 +1,8 @@
-export type ErrorKey = 'ResasPrefecturesFetchError' | 'ResasPrefectureParseError';
+export type ErrorKey =
+  | 'ResasPrefecturesFetchError'
+  | 'ResasPrefectureParseError'
+  | 'ResasPopulationFetchError'
+  | 'ResasPopulationParseError';
 
 export class AppError extends Error {
   constructor(
