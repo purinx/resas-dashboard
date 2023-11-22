@@ -1,6 +1,7 @@
 import { z } from 'zod';
-import { Endpoints, headers } from './constants';
 import axios from 'axios';
+import { Endpoints, headers } from './constants';
+import { AppError } from '../errors';
 
 const buildPopulationRequestUrl = (prefCode: number, cityCode: string = '-') => {
   return `${Endpoints.population}?cityCode${cityCode}&prefCode=${prefCode}`;
@@ -25,6 +26,25 @@ export const PopulationResponseSchema = z.object({
 });
 
 export const fetchPopulations = async (prefCode: number, cityCode: string = '-') => {
-  const res = await axios.get(buildPopulationRequestUrl(prefCode, cityCode), { headers });
-  console.log(JSON.stringify(res.data));
+  const res = await axios
+    .get(buildPopulationRequestUrl(prefCode, cityCode), { headers })
+    .catch((e) => {
+      throw new AppError('ResasPopulationFetchError', e.message);
+    });
+  const parseResult = PopulationResponseSchema.safeParse(res.data);
+  if (!parseResult.success) {
+    throw new AppError('ResasPopulationParseError', parseResult.error.message);
+  }
+  return parseResult.data.result;
+};
+
+export const fetchPopulationsParallel = async (prefCodes: number[]) => {
+  const entries = await Promise.all(
+    prefCodes.map(async (prefCode) => {
+      const populations = await fetchPopulations(prefCode);
+      return [prefCode, populations] as const;
+    }),
+  );
+
+  return Object.fromEntries(entries);
 };
