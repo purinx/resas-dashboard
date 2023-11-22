@@ -1,9 +1,11 @@
 import { Title } from '@/libs/components/typographies/Title';
+import { PopulationStatistics } from '@/libs/features/populationStatistics';
 
-export default function Home() {
+export default function Page() {
   return (
     <main>
-      <Title>This is styled with vanilla-extract.</Title>
+      <Title>Resas Dashboard</Title>
+      <PopulationStatistics />
     </main>
   );
 }
