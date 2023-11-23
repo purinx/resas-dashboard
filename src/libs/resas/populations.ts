@@ -1,11 +1,15 @@
 import { z } from 'zod';
+import uniq from 'lodash.uniq';
 import axios from 'axios';
 import { Endpoints, headers } from './constants';
 import { AppError } from '../errors';
 
-const buildPopulationRequestUrl = (prefCode: number, cityCode: string = '-') => {
-  return `${Endpoints.population}?cityCode${cityCode}&prefCode=${prefCode}`;
-};
+export const PopulationLabelSchema = z.enum([
+  '総人口',
+  '年少人口',
+  '生産年齢人口',
+  '老年人口',
+]);
 
 const PopulationResponseSchema = z.object({
   message: z.string().nullable(),
@@ -13,7 +17,7 @@ const PopulationResponseSchema = z.object({
     boundaryYear: z.number(),
     data: z.array(
       z.object({
-        label: z.enum(['総人口', '年少人口', '生産年齢人口', '老年人口']),
+        label: PopulationLabelSchema,
         data: z.array(
           z.object({
             rate: z.number().optional(),
@@ -25,6 +29,16 @@ const PopulationResponseSchema = z.object({
     ),
   }),
 });
+
+export type PopulationLabel = z.infer<typeof PopulationLabelSchema>;
+
+export type PopulationResponse = z.infer<typeof PopulationResponseSchema>;
+
+export type PopulationsMap = { [prefCode: string]: PopulationResponse['result'] };
+
+const buildPopulationRequestUrl = (prefCode: number, cityCode: string = '-') => {
+  return `${Endpoints.population}?cityCode${cityCode}&prefCode=${prefCode}`;
+};
 
 export const fetchPopulations = async (prefCode: number, cityCode: string = '-') => {
   const res = await axios
@@ -41,7 +55,7 @@ export const fetchPopulations = async (prefCode: number, cityCode: string = '-')
 
 export const fetchPopulationsParallel = async (prefCodes: number[]) => {
   const entries = await Promise.all(
-    prefCodes.map(async (prefCode) => {
+    uniq(prefCodes).map(async (prefCode) => {
       const populations = await fetchPopulations(prefCode);
       return [prefCode, populations] as const;
     }),
