@@ -15,7 +15,7 @@ type Props = {
 
 export const PrefectureSelector = ({ prefectureOptions }: Props) => {
   const { selected, addPrefecture, removePrefecture } = usePrefectureSelect();
-  useSyncPrefCode();
+  useSyncPrefCode(prefectureOptions);
 
   const getIsSelected = (prefCode: number) =>
     selected.findIndex((_) => _.code === prefCode) > -1;

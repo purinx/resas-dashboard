@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create, createStore } from 'zustand';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { Prefecture } from '@/libs/resas/prefectures';
 import { colors } from './PopulationsChart/colors';
@@ -8,6 +8,7 @@ export type PrefectureLegend = { code: number; label: string; color: string };
 
 type PrefectureSelectStore = {
   selected: PrefectureLegend[];
+  initialized: boolean;
   addPrefecture: (pref: Prefecture) => void;
   removePrefecture: (pref: Prefecture) => void;
 };
@@ -20,7 +21,7 @@ const createPrefectureLegend = (pref: Prefecture, i: number): PrefectureLegend =
 
 export const usePrefectureSelect = create<PrefectureSelectStore>((set, get) => ({
   selected: [],
-  prefCodes: get()?.selected?.map((_) => _.code) ?? [],
+  initialized: false,
   addPrefecture: (pref: Prefecture) =>
     set((state) => ({
       selected: [...state.selected, createPrefectureLegend(pref, state.selected.length)],
@@ -31,13 +32,23 @@ export const usePrefectureSelect = create<PrefectureSelectStore>((set, get) => (
     })),
 }));
 
-export const useSyncPrefCode = () => {
+export const useSyncPrefCode = (prefectures: Prefecture[]) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  if (!usePrefectureSelect.getState().initialized) {
+    const prefCodes = searchParams.getAll('prefCode');
+    usePrefectureSelect.setState({
+      selected: prefectures
+        .filter((pref) => prefCodes.includes(String(pref.prefCode)))
+        .map(createPrefectureLegend),
+      initialized: true,
+    });
+  }
+
   useEffect(() => {
-    const unsubscribe = usePrefectureSelect.subscribe((state) => {
+    const syncSearchParams = (state: PrefectureSelectStore) => {
       const params = new URLSearchParams(searchParams);
       params.delete('prefCode');
       state.selected.forEach((pref) => params.append('prefCode', String(pref.code)));
@@ -45,7 +56,9 @@ export const useSyncPrefCode = () => {
       if (params.toString() !== searchParams.toString()) {
         router.push(pathname.concat('?', params.toString()));
       }
-    });
+    };
+
+    const unsubscribe = usePrefectureSelect.subscribe(syncSearchParams);
     return unsubscribe;
   }, [searchParams, pathname, router]);
 };
