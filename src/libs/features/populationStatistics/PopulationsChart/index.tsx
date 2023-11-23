@@ -23,7 +23,7 @@ const populationByYear = (
         code,
         populations[code]?.data
           .find((_) => _.label === label)
-          ?.data?.find((_) => _.year === year),
+          ?.data?.find((_) => _.year === year)?.value,
       ]),
     ),
   };
