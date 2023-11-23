@@ -2,7 +2,7 @@ import { theme } from '@/libs/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const label = style({
-  width: '100%',
+  width: 'max-content',
   fontSize: '15px',
   color: theme.color.black,
   display: 'flex',
