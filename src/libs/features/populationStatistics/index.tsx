@@ -24,13 +24,12 @@ export const PopulationStatistics = async ({ searchParams }: Props) => {
   const populations = await fetchPopulationsParallel(prefCodes);
 
   return (
-    <section>
-      <h2 className={heading({ as: 'h2' })}>人口構成グラフ</h2>
-      <section>
-        <h3 className={heading({ as: 'h3' })}>都道府県を選択</h3>
+    <section className={revertSp}>
+      <section className={prefectureSelectSection}>
+        <h2 className={heading({ as: 'h3' })}>都道府県を選択</h2>
         <PrefectureSelector prefectureOptions={prefectures} />
-        <PopulationChart populationLabel="総人口" populations={populations} />
       </section>
+      <PopulationChart populationLabel="総人口" populations={populations} />
     </section>
   );
 };
