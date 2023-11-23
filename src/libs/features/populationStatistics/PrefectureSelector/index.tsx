@@ -28,6 +28,7 @@ export const PrefectureSelector = ({ prefectureOptions }: Props) => {
     <div className={classes.checkBoxGrid}>
       {prefectureOptions.map((option) => (
         <Checkbox
+          bg={selected.find((_) => _.code === option.prefCode)?.color}
           key={option.prefCode}
           onChange={getOnChange(option)}
           checked={getIsSelected(option.prefCode)}

@@ -9,15 +9,17 @@ type Props = {
   checked: boolean;
   onChange: (checked: boolean) => void;
   children: ReactNode;
+  bg?: string;
 };
 
-export const Checkbox = ({ checked, onChange, children }: Props) => {
+export const Checkbox = ({ checked, onChange, children, bg }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
   const id = useId();
 
   return (
     <CheckboxLabel htmlFor={id}>
       <CheckboxButton
+        style={{ backgroundColor: bg && `${bg}50` }}
         id={id}
         role="checkbox"
         aria-checked={checked}
