@@ -37,7 +37,7 @@ export const useSyncPrefCode = () => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    usePrefectureSelect.subscribe((state) => {
+    const unsubscribe = usePrefectureSelect.subscribe((state) => {
       const params = new URLSearchParams(searchParams);
       params.delete('prefCode');
       state.selected.forEach((pref) => params.append('prefCode', String(pref.code)));
@@ -46,5 +46,6 @@ export const useSyncPrefCode = () => {
         router.push(pathname.concat('?', params.toString()));
       }
     });
+    return unsubscribe;
   }, [searchParams, pathname, router]);
 };
