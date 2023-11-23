@@ -1,8 +1,10 @@
 'use client';
+import { useTransition } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { Prefecture } from '@/libs/resas/prefectures';
 import { Checkbox } from '@/libs/components/controls/Checkbox';
-import { usePrefectureStore } from '../store';
+import { usePrefectureSelect } from '../store';
 import * as classes from './PrefectureSelector.css';
 
 type Props = {
@@ -10,12 +12,13 @@ type Props = {
 };
 
 export const PrefectureSelector = ({ prefectureOptions }: Props) => {
-  const { prefCodes, addPrefecture, removePrefecture } = usePrefectureStore();
+  const { selected, addPrefecture, removePrefecture } = usePrefectureSelect();
 
-  const getSelected = (prefCode: number) => prefCodes.includes(prefCode);
-  const getOnChange = (prefCode: number) => (checked: boolean) => {
+  const getIsSelected = (prefCode: number) =>
+    selected.findIndex((_) => _.code === prefCode) > -1;
+  const getOnChange = (pref: Prefecture) => (checked: boolean) => {
     const addOrRemove = checked ? addPrefecture : removePrefecture;
-    addOrRemove(prefCode);
+    addOrRemove(pref);
   };
 
   return (
@@ -23,8 +26,8 @@ export const PrefectureSelector = ({ prefectureOptions }: Props) => {
       {prefectureOptions.map((option) => (
         <Checkbox
           key={option.prefCode}
-          onChange={getOnChange(option.prefCode)}
-          checked={getSelected(option.prefCode)}
+          onChange={getOnChange(option)}
+          checked={getIsSelected(option.prefCode)}
         >
           {option.prefName}
         </Checkbox>
