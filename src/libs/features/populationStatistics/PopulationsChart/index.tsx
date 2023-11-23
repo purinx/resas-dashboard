@@ -49,3 +49,5 @@ export const PopulationChart = ({ populations, populationLabel }: Props) => {
     </LineChart>
   );
 };
+
+export default PopulationChart;

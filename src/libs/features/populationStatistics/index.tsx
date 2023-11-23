@@ -1,10 +1,13 @@
 'use server';
+import dynamic from 'next/dynamic';
 
 import { fetchPrefectures } from '@/libs/resas/prefectures';
 import { heading } from '@/libs/styles/heading.css';
 import { fetchPopulationsParallel } from '@/libs/resas/populations';
 import { PrefectureSelector } from './PrefectureSelector';
-import { PopulationChart } from './PopulationsChart';
+import { prefectureSelectSection, revertSp } from './PopulationStatistics.css';
+
+const PopulationChart = dynamic(() => import('./PopulationsChart'), { ssr: false });
 
 type Props = {
   searchParams: NextSearchParams;
