@@ -1,6 +1,6 @@
-import { ComponentProps, FunctionComponent } from "react";
-import { title } from "./Title.css";
+import { ComponentProps, FunctionComponent } from 'react';
+import { heading } from '@/libs/styles/heading.css';
 
-export const Title: FunctionComponent<ComponentProps<"h1">> = (props) => (
-  <h1 className={title} {...props} />
+export const Title: FunctionComponent<ComponentProps<'h1'>> = (props) => (
+  <h1 className={heading({ as: 'h1' })} {...props} />
 );
