@@ -4,7 +4,6 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { Prefecture } from '@/libs/resas/prefectures';
 import { colors } from './PopulationsChart/colors';
 import { useEffect } from 'react';
-import { z } from 'zod';
 
 export type PrefectureLegend = { code: number; label: string; color: string };
 
