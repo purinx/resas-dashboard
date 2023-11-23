@@ -5,4 +5,5 @@ export const checkBoxGrid = style({
   gridTemplateColumns: 'repeat(auto-fill, 100px)',
   gap: '20px',
   maxWidth: '100%',
+  marginBottom: '50px',
 });
