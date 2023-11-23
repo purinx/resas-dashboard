@@ -1,9 +1,11 @@
 'use client';
 import { LineChart, Line, XAxis, YAxis } from 'recharts';
-import { useMemo } from 'react';
+import { ComponentProps, useMemo } from 'react';
 
 import { PopulationLabel, PopulationsMap } from '@/libs/resas/populations';
 import { useNormalizedPopulationData } from './useNormalizedPopulationData';
+import { BaseAxisProps } from 'recharts/types/util/types';
+import { chartWrapper } from './PopulationChart.css';
 
 type Props = {
   populations: PopulationsMap;
@@ -22,30 +24,14 @@ const PopulationChart = ({ populations, populationLabel }: Props) => {
 
   return (
     <LineChart
+      className={chartWrapper}
       data={data}
       width={width}
       height={height}
-      margin={{ top: margin + 50, left: margin, right: margin, bottom: margin + 50 }}
+      margin={{ top: margin, left: margin, right: margin, bottom: margin }}
     >
       <XAxis dataKey="name" />
-      {!isSp && (
-        <YAxis
-          tick={({
-            payload,
-            tickFormatter,
-            visibleTicksCount,
-            verticalAnchor,
-            y,
-            ...props
-          }) => {
-            return (
-              <text {...props} y={y + 5}>
-                {payload.value / 10000}万人
-              </text>
-            );
-          }}
-        />
-      )}
+      {!isSp && <YAxis tick={renderYTick} />}
       {lines.map((pref) => (
         <Line
           key={pref.code}
@@ -59,3 +45,18 @@ const PopulationChart = ({ populations, populationLabel }: Props) => {
 };
 
 export default PopulationChart;
+
+const renderYTick: BaseAxisProps['tick'] = ({
+  payload,
+  tickFormatter,
+  visibleTicksCount,
+  verticalAnchor,
+  y,
+  ...props
+}) => {
+  return (
+    <text {...props} y={y + 5}>
+      {payload.value / 10000}万人
+    </text>
+  );
+};
