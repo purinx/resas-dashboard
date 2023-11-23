@@ -1,19 +1,18 @@
 'use client';
 import { LineChart, Line, XAxis, YAxis } from 'recharts';
-import { ComponentProps, useMemo } from 'react';
+import { useMemo } from 'react';
 
-import { PopulationLabel, PopulationsMap } from '@/libs/resas/populations';
+import { PopulationsMap } from '@/libs/resas/populations';
 import { useNormalizedPopulationData } from './useNormalizedPopulationData';
 import { BaseAxisProps } from 'recharts/types/util/types';
 import { chartWrapper } from './PopulationChart.css';
 
 type Props = {
   populations: PopulationsMap;
-  populationLabel: PopulationLabel;
 };
 
-const PopulationChart = ({ populations, populationLabel }: Props) => {
-  const { data, lines } = useNormalizedPopulationData(populations, populationLabel);
+const PopulationChart = ({ populations }: Props) => {
+  const { data, lines } = useNormalizedPopulationData(populations);
   const width = useMemo(() => {
     if (typeof window === 'undefined') return 1000;
     return Math.min(screen.width * 0.9, 1000);

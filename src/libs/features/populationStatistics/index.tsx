@@ -5,7 +5,8 @@ import { fetchPrefectures } from '@/libs/resas/prefectures';
 import { heading } from '@/libs/styles/heading.css';
 import { fetchPopulationsParallel } from '@/libs/resas/populations';
 import { PrefectureSelector } from './PrefectureSelector';
-import { prefectureSelectSection, revertSp } from './PopulationStatistics.css';
+import { revertSp, subSection } from './PopulationStatistics.css';
+import { PopulationLabelSelector } from './PopulationLabelSelector';
 
 const PopulationChart = dynamic(() => import('./PopulationsChart'), { ssr: false });
 
@@ -28,11 +29,15 @@ export const PopulationStatistics = async ({ searchParams }: Props) => {
 
   return (
     <section className={revertSp}>
-      <section className={prefectureSelectSection}>
+      <section className={subSection}>
         <h2 className={heading({ as: 'h3' })}>都道府県を選択</h2>
         <PrefectureSelector prefectureOptions={prefectures} />
       </section>
-      <PopulationChart populationLabel="総人口" populations={populations} />
+      <section className={subSection}>
+        <h2 className={heading({ as: 'h3' })}>統計を選択</h2>
+        <PopulationLabelSelector />
+      </section>
+      <PopulationChart populations={populations} />
     </section>
   );
 };

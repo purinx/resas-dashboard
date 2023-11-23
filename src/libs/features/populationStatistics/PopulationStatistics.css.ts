@@ -13,6 +13,6 @@ export const revertSp = style({
   },
 });
 
-export const prefectureSelectSection = style({
+export const subSection = style({
   width: '100%',
 });
