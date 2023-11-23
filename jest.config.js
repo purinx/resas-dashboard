@@ -11,6 +11,9 @@ const config = {
   testEnvironmentOptions: {
     customExportConditions: [''],
   },
+  transform: {
+    '\\.css\\.ts$': '@vanilla-extract/jest-transform',
+  },
 };
 
 module.exports = createJestConfig(config);
