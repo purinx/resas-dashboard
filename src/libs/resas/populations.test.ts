@@ -2,11 +2,11 @@ import { http, HttpResponse } from 'msw';
 import { setupServer } from 'msw/node';
 
 import { Endpoints } from './constants';
-import dummyResponse from './fixtures/prefectures';
-import { fetchPrefectures } from './prefectures';
+import dummyResponse from './fixtures/populations';
+import { fetchPopulations } from './populations';
 
 const server = setupServer(
-  http.get(Endpoints.prefectures, () => {
+  http.get(Endpoints.population, () => {
     return HttpResponse.json(dummyResponse);
   }),
 );
@@ -23,9 +23,11 @@ afterAll(() => {
   server.close();
 });
 
-describe('fetchPrefectures', () => {
+describe('fetchPopulations', () => {
   test('Normal: Ability to parse dummyJson returned from the API', async () => {
-    const res = await fetchPrefectures();
+    const prefCode = 1;
+
+    const res = await fetchPopulations(prefCode);
     expect(res).toEqual(dummyResponse.result);
   });
 });
