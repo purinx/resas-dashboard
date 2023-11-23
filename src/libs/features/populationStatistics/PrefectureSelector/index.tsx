@@ -1,10 +1,8 @@
 'use client';
-import { useTransition } from 'react';
-import { useRouter } from 'next/navigation';
 
 import { Prefecture } from '@/libs/resas/prefectures';
 import { Checkbox } from '@/libs/components/controls/Checkbox';
-import { usePrefectureSelect } from '../usePrefectureSelect';
+import { usePrefectureSelect, useSyncPrefCode } from '../usePrefectureSelect';
 import * as classes from './PrefectureSelector.css';
 
 type Props = {
@@ -13,6 +11,7 @@ type Props = {
 
 export const PrefectureSelector = ({ prefectureOptions }: Props) => {
   const { selected, addPrefecture, removePrefecture } = usePrefectureSelect();
+  useSyncPrefCode();
 
   const getIsSelected = (prefCode: number) =>
     selected.findIndex((_) => _.code === prefCode) > -1;

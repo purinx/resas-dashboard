@@ -30,7 +30,7 @@ const populationByYear = (
 };
 
 export const PopulationChart = ({ populations, populationLabel }: Props) => {
-  const { selected } = usePrefectureSelect();
+  const selected = usePrefectureSelect((state) => state.selected);
   const prefCodes = selected.map((_) => _.code);
   const data = years.map((year) =>
     populationByYear(populations, prefCodes, year, populationLabel),
@@ -40,8 +40,7 @@ export const PopulationChart = ({ populations, populationLabel }: Props) => {
     if (typeof window === 'undefined') return 1000;
     return Math.min(screen.width - 40, 1000);
   }, []);
-
-  console.log(JSON.stringify(data));
+  console.log(selected);
 
   return (
     <LineChart data={data} width={width} height={width}>
