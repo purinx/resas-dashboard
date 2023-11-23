@@ -40,3 +40,5 @@ export const Checkbox = ({ checked, onChange, children }: Props) => {
     </CheckboxLabel>
   );
 };
+
+export default Checkbox;

@@ -1,9 +1,13 @@
 'use client';
+import dynamic from 'next/dynamic';
 
 import { Prefecture } from '@/libs/resas/prefectures';
-import { Checkbox } from '@/libs/components/controls/Checkbox';
 import { usePrefectureSelect, useSyncPrefCode } from '../usePrefectureSelect';
 import * as classes from './PrefectureSelector.css';
+
+const Checkbox = dynamic(() => import('@/libs/components/controls/Checkbox'), {
+  ssr: false,
+});
 
 type Props = {
   prefectureOptions: Prefecture[];
