@@ -2,7 +2,7 @@
 import { LineChart, Line, XAxis, YAxis } from 'recharts';
 import { PopulationLabel, PopulationsMap } from '@/libs/resas/populations';
 import { years } from './years';
-import { usePrefectureSelect } from '../store';
+import { usePrefectureSelect } from '../usePrefectureSelect';
 import { useMemo } from 'react';
 
 type Props = {
@@ -41,12 +41,12 @@ export const PopulationChart = ({ populations, populationLabel }: Props) => {
     return Math.min(screen.width - 40, 1000);
   }, []);
 
-  console.log(populations);
+  console.log(JSON.stringify(data));
 
   return (
     <LineChart data={data} width={width} height={width}>
       {selected.map((pref) => (
-        <Line key={pref.code} dataKey={pref.code} stroke={pref.color} />
+        <Line key={pref.code} dataKey={String(pref.code)} stroke={pref.color} />
       ))}
     </LineChart>
   );

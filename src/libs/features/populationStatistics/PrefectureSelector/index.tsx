@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { Prefecture } from '@/libs/resas/prefectures';
 import { Checkbox } from '@/libs/components/controls/Checkbox';
-import { usePrefectureSelect } from '../store';
+import { usePrefectureSelect } from '../usePrefectureSelect';
 import * as classes from './PrefectureSelector.css';
 
 type Props = {
