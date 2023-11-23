@@ -15,7 +15,7 @@ type PrefectureSelectStore = {
 const createPrefectureLegend = (pref: Prefecture, i: number): PrefectureLegend => ({
   code: pref.prefCode,
   label: pref.prefName,
-  color: colors[i % 16],
+  color: colors[i % 12],
 });
 
 export const usePrefectureSelect = create<PrefectureSelectStore>((set, get) => ({
