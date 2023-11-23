@@ -40,7 +40,6 @@ export const PopulationChart = ({ populations, populationLabel }: Props) => {
     if (typeof window === 'undefined') return 1000;
     return Math.min(screen.width - 40, 1000);
   }, []);
-  console.log(selected);
 
   return (
     <LineChart data={data} width={width} height={width}>
