@@ -19,7 +19,7 @@ const createPrefectureLegend = (pref: Prefecture, i: number): PrefectureLegend =
   color: colors[i % 12],
 });
 
-export const usePrefectureSelect = create<PrefectureSelectStore>((set, get) => ({
+export const usePrefectureSelect = create<PrefectureSelectStore>((set) => ({
   selected: [],
   initialized: false,
   addPrefecture: (pref: Prefecture) =>
