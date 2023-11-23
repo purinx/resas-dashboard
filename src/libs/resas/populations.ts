@@ -7,7 +7,7 @@ const buildPopulationRequestUrl = (prefCode: number, cityCode: string = '-') => 
   return `${Endpoints.population}?cityCode${cityCode}&prefCode=${prefCode}`;
 };
 
-export const PopulationResponseSchema = z.object({
+const PopulationResponseSchema = z.object({
   message: z.string().nullable(),
   result: z.object({
     boundaryYear: z.number(),
@@ -16,6 +16,7 @@ export const PopulationResponseSchema = z.object({
         label: z.enum(['総人口', '年少人口', '生産年齢人口', '老年人口']),
         data: z.array(
           z.object({
+            rate: z.number().optional(),
             year: z.number(),
             value: z.number(),
           }),
