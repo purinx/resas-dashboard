@@ -2,11 +2,15 @@ import { Title } from '@/libs/components/typographies/Title';
 import { PopulationStatistics } from '@/libs/features/populationStatistics';
 import * as classes from './index.css';
 
-export default function Page() {
+type Props = {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default function Page({ searchParams }: Props) {
   return (
     <main className={classes.mainSection}>
       <Title>Resas Dashboard</Title>
-      <PopulationStatistics />
+      <PopulationStatistics searchParams={searchParams} />
     </main>
   );
 }
