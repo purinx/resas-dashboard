@@ -2,12 +2,12 @@ import { http, HttpResponse } from 'msw';
 import { setupServer } from 'msw/node';
 
 import { Endpoints } from './constants';
-import dummyJson from './fixtures/populations.json';
+import dummyResponse from './fixtures/populations';
 import { fetchPopulations } from './populations';
 
 const server = setupServer(
   http.get(Endpoints.population, () => {
-    return HttpResponse.json(dummyJson);
+    return HttpResponse.json(dummyResponse);
   }),
 );
 
@@ -28,6 +28,6 @@ describe('fetchPopulations', () => {
     const prefCode = 1;
 
     const res = await fetchPopulations(prefCode);
-    expect(res).toEqual(dummyJson);
+    expect(res).toEqual(dummyResponse.result);
   });
 });
