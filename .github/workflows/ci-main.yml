@@ -21,6 +21,9 @@ jobs:
       - name: Check yarn version
         run: yarn --version
 
+      - name: Install Dependencies
+        run: yarn
+
       - name: Test
         run: yarn test
 
