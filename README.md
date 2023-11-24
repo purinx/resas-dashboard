@@ -4,7 +4,7 @@ This site visualizes demographics by prefecture.
 
 ## Requirement
 
-- Node.js V18
+- Node.js V20
 - Resas API Key
 
 ## Dependencies
