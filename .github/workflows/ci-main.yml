@@ -1,7 +1,7 @@
 name: CI main push
 on: [push]
 jobs:
-  ci:
+  setup:
     name: CI
     runs-on: ubuntu-latest
     steps:
@@ -26,6 +26,13 @@ jobs:
 
       - name: Install Dependencies
         run: yarn
+
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+    needs: [setup]
+    steps:
+      - uses: actions/checkout@v3
 
       - name: Test
         run: yarn test
