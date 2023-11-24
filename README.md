@@ -5,7 +5,6 @@ This site visualizes demographics by prefecture.
 ## Requirement
 
 - Node.js V18
-- Yarn v4
 - Resas API Key
 
 ## Dependencies
@@ -24,13 +23,13 @@ This site visualizes demographics by prefecture.
 ## Storybook
 
 ```
-yarn storybook
+npm run storybook
 ```
 
 ## Test
 
 ```
-yarn test
+npm run test
 ```
 
 ## Run locally (For dev use)
@@ -38,7 +37,7 @@ yarn test
 ```
 cp .env.example .env.local
 # Edit .env.local
-yarn dev
+npm run dev
 ```
 
 ## Deploy
