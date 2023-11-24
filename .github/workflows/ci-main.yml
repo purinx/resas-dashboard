@@ -21,6 +21,9 @@ jobs:
       - name: Check yarn version
         run: yarn --version
 
+      - name: Set nodeLinker node-modules
+        run: yarn config set nodeLinker node-modules
+
       - name: Install Dependencies
         run: yarn
 
