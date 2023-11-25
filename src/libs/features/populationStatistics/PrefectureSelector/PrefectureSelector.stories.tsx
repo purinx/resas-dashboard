@@ -14,4 +14,9 @@ export const PrefectureSelectorStory: StoryObj = {
   args: {
     prefectureOptions: data.result,
   },
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
 };
