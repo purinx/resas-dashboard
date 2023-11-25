@@ -7,7 +7,9 @@ type Props = {
   error: NextError;
 };
 
-export const Error = ({ error }: Props) => {
+const ErrorPage = ({ error }: Props) => {
   useLogError(error);
   return <ErrorScreen />;
 };
+
+export default ErrorPage;
