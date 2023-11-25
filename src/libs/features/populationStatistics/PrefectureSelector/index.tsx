@@ -27,7 +27,7 @@ export const PrefectureSelector = ({ prefectureOptions }: Props) => {
   const getColor = (prefCode: number) => selected.find((_) => _.code === prefCode)?.color;
 
   return (
-    <div className={classes.checkBoxGrid}>
+    <div data-testid="PrefectureSelector" className={classes.checkBoxGrid}>
       {prefectureOptions.map((option) => (
         <Checkbox
           bg={getColor(option.prefCode)}
