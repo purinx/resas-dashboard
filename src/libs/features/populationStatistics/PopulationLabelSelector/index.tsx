@@ -20,7 +20,7 @@ export const PopulationLabelSelector = () => {
   };
 
   return (
-    <div className={populationLabelSelect}>
+    <div data-testid="PopulationLabelSelector" className={populationLabelSelect}>
       {options.map((label) => (
         <Checkbox checked={selected === label} key={label} onChange={getOnChange(label)}>
           {label}
