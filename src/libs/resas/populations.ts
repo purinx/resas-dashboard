@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { Endpoints, headers } from './constants';
 import { AppError } from '../errors';
+import { logger } from '../logger';
 
 export const PopulationLabelSchema = z.enum([
   '総人口',
@@ -45,10 +46,12 @@ export const fetchPopulations = async (prefCode: number, cityCode: string = '-')
   const res = await axios
     .get(buildPopulationRequestUrl(prefCode, cityCode), { headers })
     .catch((e) => {
-      throw new AppError('ResasPopulationFetchError', e.message);
+      logger.error(`Failed to fetch populations. prefCode: ${prefCode}`);
+      throw e;
     });
   const parseResult = PopulationResponseSchema.safeParse(res.data);
   if (!parseResult.success) {
+    logger.error(`Failed to parse populations response. prefCode: ${prefCode}`);
     throw new AppError('ResasPopulationParseError', parseResult.error.message);
   }
   return parseResult.data.result;
