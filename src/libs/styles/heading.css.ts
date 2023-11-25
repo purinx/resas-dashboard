@@ -1,4 +1,5 @@
 import { recipe } from '@vanilla-extract/recipes';
+
 import { theme } from './theme.css';
 
 export const heading = recipe({

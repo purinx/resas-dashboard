@@ -1,7 +1,7 @@
 import axios, { isAxiosError } from 'axios';
 import { z } from 'zod';
-import { AppError } from '../errors';
 
+import { AppError } from '../errors';
 import { Endpoints, headers } from './constants';
 
 const PrefecturesResponseSchema = z.object({

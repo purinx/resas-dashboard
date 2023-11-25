@@ -2,6 +2,7 @@
 import dynamic from 'next/dynamic';
 
 import { Prefecture } from '@/libs/resas/prefectures';
+
 import { usePrefectureSelect, useSyncPrefCode } from '../usePrefectureSelect';
 import * as classes from './PrefectureSelector.css';
 

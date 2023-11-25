@@ -1,8 +1,13 @@
-import { create, createStore } from 'zustand';
-import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { Prefecture } from '@/libs/resas/prefectures';
-import { colors } from './PopulationsChart/colors';
 import { useEffect } from 'react';
+
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
+
+import { create, createStore } from 'zustand';
+
+import { Prefecture } from '@/libs/resas/prefectures';
+
+import { colors } from './PopulationsChart/colors';
+
 
 export type PrefectureLegend = { code: number; label: string; color: string };
 

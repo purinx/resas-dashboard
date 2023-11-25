@@ -1,4 +1,5 @@
 import { ComponentProps } from 'react';
+
 import { label } from './Checkbox.css';
 
 type Props = ComponentProps<'label'>;

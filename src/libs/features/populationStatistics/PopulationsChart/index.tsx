@@ -1,10 +1,12 @@
 'use client';
-import { LineChart, Line, XAxis, YAxis } from 'recharts';
 import { useMemo } from 'react';
 
-import { PopulationsMap } from '@/libs/resas/populations';
-import { useNormalizedPopulationData } from './useNormalizedPopulationData';
+import { LineChart, Line, XAxis, YAxis } from 'recharts';
 import { BaseAxisProps } from 'recharts/types/util/types';
+
+import { PopulationsMap } from '@/libs/resas/populations';
+
+import { useNormalizedPopulationData } from './useNormalizedPopulationData';
 import { chartWrapper } from './PopulationChart.css';
 
 type Props = {

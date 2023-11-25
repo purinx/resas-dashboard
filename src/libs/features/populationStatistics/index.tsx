@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { fetchPrefectures } from '@/libs/resas/prefectures';
 import { heading } from '@/libs/styles/heading.css';
 import { fetchPopulationsParallel } from '@/libs/resas/populations';
+
 import { PrefectureSelector } from './PrefectureSelector';
 import { revertSp, subSection } from './PopulationStatistics.css';
 import { PopulationLabelSelector } from './PopulationLabelSelector';

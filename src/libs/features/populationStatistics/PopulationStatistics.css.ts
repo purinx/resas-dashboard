@@ -1,5 +1,6 @@
-import { queries } from '@/libs/styles/constants';
 import { style } from '@vanilla-extract/css';
+
+import { queries } from '@/libs/styles/constants';
 
 export const revertSp = style({
   display: 'flex',

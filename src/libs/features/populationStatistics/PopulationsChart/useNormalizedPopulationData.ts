@@ -1,4 +1,5 @@
 import { PopulationLabel, PopulationsMap } from '@/libs/resas/populations';
+
 import { usePrefectureSelect } from '../usePrefectureSelect';
 import { years } from './years';
 import { usePopulationLabelSelect } from '../usePopulationLabelSelect';

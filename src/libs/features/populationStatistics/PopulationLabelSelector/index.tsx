@@ -2,6 +2,7 @@
 import dynamic from 'next/dynamic';
 
 import { PopulationLabel } from '@/libs/resas/populations';
+
 import { usePopulationLabelSelect } from '../usePopulationLabelSelect';
 import { populationLabelSelect } from './PopulationLabelSelector.css';
 

@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+
 import { PopulationLabel } from '@/libs/resas/populations';
 
 type PopulationLabelSelectStore = {

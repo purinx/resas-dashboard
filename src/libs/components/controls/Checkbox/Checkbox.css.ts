@@ -1,5 +1,6 @@
-import { theme } from '@/libs/styles/theme.css';
 import { style } from '@vanilla-extract/css';
+
+import { theme } from '@/libs/styles/theme.css';
 
 export const label = style({
   width: 'max-content',

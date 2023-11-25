@@ -1,9 +1,10 @@
 import { Title } from '@/libs/components/typographies/Title';
 import { PopulationStatistics } from '@/libs/features/populationStatistics';
+
 import * as classes from './index.css';
 
 type Props = {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: NextSearchParams;
 };
 
 export default function Page({ searchParams }: Props) {
