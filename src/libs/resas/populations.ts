@@ -1,6 +1,5 @@
 import { z } from 'zod';
 import uniq from 'lodash.uniq';
-import axios from 'axios';
 
 import { Endpoints, headers } from './constants';
 import { AppError } from '../errors';
@@ -43,13 +42,19 @@ const buildPopulationRequestUrl = (prefCode: number, cityCode: string = '-') => 
 };
 
 export const fetchPopulations = async (prefCode: number, cityCode: string = '-') => {
-  const res = await axios
-    .get(buildPopulationRequestUrl(prefCode, cityCode), { headers })
-    .catch((e) => {
-      logger.error(`Failed to fetch populations. prefCode: ${prefCode}`);
-      throw e;
-    });
-  const parseResult = PopulationResponseSchema.safeParse(res.data);
+  const res = await fetch(buildPopulationRequestUrl(prefCode, cityCode), {
+    headers,
+  }).catch((e) => {
+    logger.error(`Failed to fetch populations. prefCode: ${prefCode}`);
+    throw e;
+  });
+
+  if (!res.ok) {
+    logger.error(`Failed to fetch populations. prefCode: ${prefCode}`);
+    throw new AppError('ResasPopulationFetchError', res.statusText);
+  }
+
+  const parseResult = PopulationResponseSchema.safeParse(await res.json());
   if (!parseResult.success) {
     logger.error(`Failed to parse populations response. prefCode: ${prefCode}`);
     throw new AppError('ResasPopulationParseError', parseResult.error.message);
