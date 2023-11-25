@@ -29,6 +29,8 @@ npm run storybook
 ## Test
 
 ```
+cp .env.example .env.test.local
+# Edit .env.test.local
 npm run test
 ```
 
