@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
-import { create, createStore } from 'zustand';
+import { create } from 'zustand';
 
 import { Prefecture } from '@/libs/resas/prefectures';
 
