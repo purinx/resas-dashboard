@@ -8,7 +8,6 @@ import { Prefecture } from '@/libs/resas/prefectures';
 
 import { colors } from './PopulationsChart/colors';
 
-
 export type PrefectureLegend = { code: number; label: string; color: string };
 
 type PrefectureSelectStore = {
@@ -59,7 +58,7 @@ export const useSyncPrefCode = (prefectures: Prefecture[]) => {
       state.selected.forEach((pref) => params.append('prefCode', String(pref.code)));
 
       if (params.toString() !== searchParams.toString()) {
-        router.push(pathname.concat('?', params.toString()));
+        router.push(pathname.concat('?', params.toString()), { scroll: false });
       }
     };
 
