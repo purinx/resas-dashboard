@@ -10,7 +10,7 @@ const meta: Meta<typeof PrefectureSelector> = {
 
 export default meta;
 
-export const PrefectureSelectorStory: StoryObj = {
+export const Story: StoryObj = {
   args: {
     prefectureOptions: data.result,
   },
