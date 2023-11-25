@@ -28,28 +28,25 @@ describe('PrefectureSelector', () => {
 
     await screen.findByTestId('PrefectureSelector');
 
-    // FIXME: Too slow
-    await Promise.all(
-      dummyPrefectures.result.map(async (pref) => {
-        const checkbox = screen.getByText(pref.prefName);
-        act(() => {
-          checkbox.click();
-        });
+    dummyPrefectures.result.forEach((pref) => {
+      const checkbox = screen.getByText(pref.prefName);
+      act(() => {
+        checkbox.click();
+      });
 
-        expect(screen.getByRole('checkbox', { name: pref.prefName })).toHaveAttribute(
-          'aria-checked',
-          'true',
-        );
+      expect(screen.getByRole('checkbox', { name: pref.prefName })).toHaveAttribute(
+        'aria-checked',
+        'true',
+      );
 
-        act(() => {
-          checkbox.click();
-        });
+      act(() => {
+        checkbox.click();
+      });
 
-        expect(screen.getByRole('checkbox', { name: pref.prefName })).toHaveAttribute(
-          'aria-checked',
-          'false',
-        );
-      }),
-    );
+      expect(screen.getByRole('checkbox', { name: pref.prefName })).toHaveAttribute(
+        'aria-checked',
+        'false',
+      );
+    });
   });
 });
