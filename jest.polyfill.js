@@ -10,13 +10,13 @@
  */
 
 const { TextDecoder, TextEncoder } = require('node:util');
+const { Blob, File } = require('node:buffer');
 
 Object.defineProperties(globalThis, {
   TextDecoder: { value: TextDecoder },
   TextEncoder: { value: TextEncoder },
 });
 
-const { Blob, File } = require('node:buffer');
 const { fetch, Headers, FormData, Request, Response } = require('undici');
 
 Object.defineProperties(globalThis, {
