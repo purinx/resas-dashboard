@@ -1,5 +1,8 @@
 name: CI main push
 on: [push]
+env:
+  RESAS_API_KEY: 'test'
+  RESAS_API_URL: 'http://test.com/resas'
 jobs:
   setup:
     name: CI
